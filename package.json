@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "build": "tsc",
     "build:dev": "tsc --watch",
@@ -33,18 +32,7 @@
     "lint-staged": "^15.0.2",
     "prettier": "^3.0.3",
     "ts-jest": "^29.1.1",
-    "typescript": "^5.2.2"
-  },
-  "babel": {
-    "env": {
-      "test": {
-        "plugins": [
-          "@babel/plugin-transform-modules-commonjs"
-        ]
-      }
-    }
-  },
-  "dependencies": {
+    "typescript": "^5.2.2",
     "jsdom": "^22.1.0"
   }
 }
