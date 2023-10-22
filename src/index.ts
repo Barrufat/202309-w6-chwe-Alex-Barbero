@@ -69,8 +69,10 @@ const printPokemons = () => {
     const pokeImageSource =
       pokemonDetails.sprites.other["official-artwork"].front_default;
 
-    const newPokemonImage = new Image(150, 150);
+    const newPokemonImage = new Image(90, 90);
+    newPokemonImage.className = "pokemon-view__image";
     newPokemonImage.src = pokeImageSource;
+
     newPokemon?.appendChild(newPokemonImage);
 
     newPokemon.addEventListener("click", (): void => {
