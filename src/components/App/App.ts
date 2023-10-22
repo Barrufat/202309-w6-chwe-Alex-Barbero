@@ -4,9 +4,11 @@ class App extends Component {
   protected populate(): void {
     this.element.innerHTML = `
     <div class="pokemon-box">
-      <ul class="pokedex">
+    <img class="pokemon-box__main-title" src="./main-title.png" alt="pokemon main title" witdh="200" heigth=100"/>
+    <div class="pokemon-box__header"></div>
+      <ul class="pokemon-box__pokedex">
       </ul>
-      <div class="controllers-box">
+      <div class="pokemon-box__controllers">
       </div>
     </div>
     `;
