@@ -75,10 +75,12 @@ const printPokemons = () => {
       const mainDetailElement = document.querySelector(
         ".main-detail-container",
       )!;
+
       const pokemonDetailCard = new PokemonCard(
         mainDetailElement,
         pokemonDetails,
       );
+
       pokemonDetailCard.render();
     });
   });
