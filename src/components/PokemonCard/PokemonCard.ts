@@ -4,7 +4,7 @@ import Component from "../Component/Component.js";
 class PokemonCard extends Component {
   constructor(
     parentElement: Element,
-    private readonly pokemonDetails: PokemonDetails,
+    public readonly pokemonDetails: PokemonDetails,
   ) {
     super(parentElement, "div", "pokemon-card");
   }
