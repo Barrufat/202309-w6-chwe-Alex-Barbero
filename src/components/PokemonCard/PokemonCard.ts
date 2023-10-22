@@ -4,7 +4,7 @@ import Component from "../Component/Component.js";
 class PokemonCard extends Component {
   constructor(
     parentElement: Element,
-    private readonly pokemonDetails: PokemonDetails,
+    public readonly pokemonDetails: PokemonDetails,
   ) {
     super(parentElement, "div", "pokemon-card");
   }
@@ -13,11 +13,20 @@ class PokemonCard extends Component {
     this.element.innerHTML = `
     <article class="pokemon-card__box">
     <h1 class="pokemon-card__title">${this.pokemonDetails.name}</h1>
-    <img class="pokemon-card__img src="${this.pokemonDetails.sprites.other["official-artwork"].front_shiny}"
+    <img class="pokemon-card__img" src="${this.pokemonDetails.sprites.other["official-artwork"].front_shiny}"
      alt="${this.pokemonDetails.name}" width="400" height"400"/>
-    <span class="pokemon-card__detail>Number: #${this.pokemonDetails.id}</span>
+    <span class="pokemon-card__detail">Number: #${this.pokemonDetails.id}</span>
     </article>
     `;
+
+    const goToPokedexButton = document.createElement("button");
+    goToPokedexButton.className = "pokemon-card__close-button";
+    goToPokedexButton.textContent = "Go to Pokedex";
+    this.element.appendChild(goToPokedexButton);
+
+    goToPokedexButton.addEventListener("click", () => {
+      this.parentElement.classList.toggle("off");
+    });
   }
 }
 

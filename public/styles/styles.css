@@ -60,7 +60,7 @@ a {
 .pokemon-box__pokedex {
   display: grid;
   grid-template-columns: auto auto auto;
-  background: url(../pokedexMid.jpg);
+  background: url(../images/pokedexMid.jpg);
   background-size: contain;
 }
 
@@ -75,7 +75,7 @@ a {
   height: 8.8vh;
   display: flex;
   justify-content: space-around;
-  background: url(../pokedexUp.jpg);
+  background: url(../images/pokedexUp.jpg);
   background-size: contain;
   align-items: center;
   background-repeat: no-repeat;
@@ -94,7 +94,7 @@ a {
   height: 90px;
   display: flex;
   justify-content: space-around;
-  background: url(../pokedexDown.jpg);
+  background: url(../images/pokedexDown.jpg);
   background-size: contain;
   align-items: flex-start;
   background-repeat: no-repeat;
@@ -159,7 +159,7 @@ a {
     height: 14vh;
     display: flex;
     justify-content: space-around;
-    background: url(../pokedexDownDesktop.jpg);
+    background: url(../images/pokedexDownDesktop.jpg);
     background-size: contain;
     align-items: center;
     background-repeat: no-repeat;
@@ -171,7 +171,7 @@ a {
     height: 22.6vh;
     display: flex;
     justify-content: space-around;
-    background: url(../pokedexUpDesktop.jpg);
+    background: url(../images/pokedexUpDesktop.jpg);
     background-size: contain;
     align-items: center;
     background-repeat: no-repeat;
