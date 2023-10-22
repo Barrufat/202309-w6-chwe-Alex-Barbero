@@ -6,8 +6,9 @@ type ButtonAction = () => Record<string, unknown>;
 
 const urlPrefix = "https://pokeapi.co/api/v2/pokemon?offset=";
 let page = 0;
-const urlSufix = "&limit=10";
+const urlSufix = "&limit=12";
 let currentPokemons: Pokemon[];
+export const currentPokemonUrl = "https://pokeapi.co/api/v2/pokemon/1/";
 
 export const getPokemons = async (
   prefix: string,
@@ -44,55 +45,58 @@ export const getPokemonDetails = async (
 // };
 
 const deletePokemons = () => {
-  const pokedex = document.querySelector(".pokedex")!;
+  const pokedex = document.querySelector(".pokemon-box__pokedex")!;
   while (pokedex.hasChildNodes())
     pokedex.removeChild(pokedex.firstChild as Element);
 };
 
 const printPokemons = () => {
-  deletePokemons();
-  const pokedex = document.querySelector(".pokedex");
-  currentPokemons.forEach(async (pokemon: Pokemon) => {
-    // Const newPokemon = document.createElement("span");
-    // newPokemon.textContent = pokemon.name;
-    // pokedex?.appendChild(newPokemon);
+  const mainDetailElement = document.createElement("div");
+  mainDetailElement.className = "main-detail-container off";
+  bodyElement.appendChild(mainDetailElement);
 
+  deletePokemons();
+
+  const pokedex = document.querySelector(".pokemon-box__pokedex");
+
+  currentPokemons.forEach(async (pokemon: Pokemon) => {
     const pokemonDetails: PokemonDetails = await getPokemonDetails(pokemon.url);
 
-    const newPokemon = document.createElement("a");
-    newPokemon.href = "./details";
+    const newPokemon = document.createElement("li");
+    newPokemon.className = "pokemon-box__pokemon-view";
     pokedex?.appendChild(newPokemon);
 
     const pokeImageSource =
       pokemonDetails.sprites.other["official-artwork"].front_default;
 
-    const newPokemonImage = new Image(200, 200);
-
+    const newPokemonImage = new Image(150, 150);
     newPokemonImage.src = pokeImageSource;
     newPokemon?.appendChild(newPokemonImage);
 
     newPokemon.addEventListener("click", (): void => {
-      const mainDetailElement = document.querySelector(
-        ".main-detail-container",
-      )!;
+      while (mainDetailElement.hasChildNodes())
+        mainDetailElement.removeChild(mainDetailElement.firstChild as Element);
+
       const pokemonDetailCard = new PokemonCard(
         mainDetailElement,
-        pokemonDetails,
+        pokemonDetails as unknown as PokemonDetails,
       );
       pokemonDetailCard.render();
+
+      mainDetailElement.classList.toggle("off");
     });
   });
 };
 
 const getMorePokemons = async () => {
-  page += 10;
+  page += 12;
   const pokemons = await getPokemons(urlPrefix, page, urlSufix);
   currentPokemons = pokemons;
   printPokemons();
 };
 
 const getLessPokemons = async () => {
-  page -= 10;
+  page -= 12;
   const pokemons = await getPokemons(urlPrefix, page, urlSufix);
   currentPokemons = pokemons;
   printPokemons();
@@ -102,15 +106,15 @@ const bodyElement = document.querySelector(".app")!;
 const appElement = new App(bodyElement, "main", "main-container");
 appElement.render();
 
-const controllersElement = document.querySelector(".controllers-box")!;
+const controllersElement = document.querySelector(".pokemon-box__controllers")!;
 
 const buttonLess = document.createElement("button");
-buttonLess.className = "button";
+buttonLess.className = "button--search";
 buttonLess.textContent = "Search Less";
 controllersElement.appendChild(buttonLess);
 
 const buttonMore = document.createElement("button");
-buttonMore.className = "button";
+buttonMore.className = "button--search";
 buttonMore.textContent = "Search More";
 controllersElement.appendChild(buttonMore);
 
